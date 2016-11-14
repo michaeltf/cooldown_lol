@@ -43,13 +43,13 @@
         <entry file="file://$PROJECT_DIR$/assets/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+              <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
               <folding>
-                <element signature="e#1393#1413#0" expanded="true" />
-                <element signature="e#1567#1587#0" expanded="true" />
-                <element signature="e#1645#1665#0" expanded="true" />
-                <element signature="e#1773#1793#0" expanded="true" />
-                <element signature="e#1890#1910#0" expanded="true" />
+                <element signature="e#1395#1415#0" expanded="true" />
+                <element signature="e#1569#1589#0" expanded="true" />
+                <element signature="e#1647#1667#0" expanded="true" />
+                <element signature="e#1775#1795#0" expanded="true" />
+                <element signature="e#1892#1912#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2286,11 +2286,11 @@
         <state relative-caret-position="34">
           <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
           <folding>
-            <element signature="e#1393#1413#0" expanded="true" />
-            <element signature="e#1567#1587#0" expanded="true" />
-            <element signature="e#1645#1665#0" expanded="true" />
-            <element signature="e#1773#1793#0" expanded="true" />
-            <element signature="e#1890#1910#0" expanded="true" />
+            <element signature="e#1395#1415#0" expanded="true" />
+            <element signature="e#1569#1589#0" expanded="true" />
+            <element signature="e#1647#1667#0" expanded="true" />
+            <element signature="e#1775#1795#0" expanded="true" />
+            <element signature="e#1892#1912#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2310,11 +2310,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1393#1413#0" expanded="true" />
-            <element signature="e#1567#1587#0" expanded="true" />
-            <element signature="e#1645#1665#0" expanded="true" />
-            <element signature="e#1773#1793#0" expanded="true" />
-            <element signature="e#1890#1910#0" expanded="true" />
+            <element signature="e#1395#1415#0" expanded="true" />
+            <element signature="e#1569#1589#0" expanded="true" />
+            <element signature="e#1647#1667#0" expanded="true" />
+            <element signature="e#1775#1795#0" expanded="true" />
+            <element signature="e#1892#1912#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2353,13 +2353,13 @@
     <entry file="file://$PROJECT_DIR$/assets/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+          <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
           <folding>
-            <element signature="e#1393#1413#0" expanded="true" />
-            <element signature="e#1567#1587#0" expanded="true" />
-            <element signature="e#1645#1665#0" expanded="true" />
-            <element signature="e#1773#1793#0" expanded="true" />
-            <element signature="e#1890#1910#0" expanded="true" />
+            <element signature="e#1395#1415#0" expanded="true" />
+            <element signature="e#1569#1589#0" expanded="true" />
+            <element signature="e#1647#1667#0" expanded="true" />
+            <element signature="e#1775#1795#0" expanded="true" />
+            <element signature="e#1892#1912#0" expanded="true" />
           </folding>
         </state>
       </provider>
