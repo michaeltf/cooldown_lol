@@ -19,12 +19,12 @@
         <param name="android-package" value="io.ionic.keyboard.IonicKeyboard" />
         <param name="onload" value="true" />
     </feature>
-    <name>LOL_cooldown_v1</name>
+    <name>Doraemon!</name>
     <description>
-        An Ionic Framework and Cordova project.
+        A testing app
     </description>
     <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+      Michael
     </author>
     <content src="index.html" />
     <access origin="*" />

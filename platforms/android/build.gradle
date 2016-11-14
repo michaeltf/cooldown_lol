@@ -150,103 +150,106 @@ task cdvPrintProps << {
 }
 
 android {
-  sourceSets {
-    main {
-      manifest.srcFile 'AndroidManifest.xml'
-      java.srcDirs = ['src']
-      resources.srcDirs = ['src']
-      aidl.srcDirs = ['src']
-      renderscript.srcDirs = ['src']
-      res.srcDirs = ['res']
-      assets.srcDirs = ['assets']
-      jniLibs.srcDirs = ['libs']
-    }
-  }
-  defaultConfig {
-    applicationId privateHelpers.extractStringFromManifest("package")
-    if (cdvMinSdkVersion != null) {
-      minSdkVersion cdvMinSdkVersion
-    }
-    minSdkVersion 23
-    targetSdkVersion 23
-  }
-  lintOptions {
-    abortOnError false;
-  }
-  compileSdkVersion cdvCompileSdkVersion
-  buildToolsVersion cdvBuildToolsVersion
-  if (Boolean.valueOf(cdvBuildMultipleApks)) {
-    productFlavors {
-      armv7 {
-        versionCode defaultConfig.versionCode * 10 + 2
-        ndk {
-          abiFilters "armeabi-v7a", ""
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
         }
-      }
-      x86 {
-        versionCode defaultConfig.versionCode * 10 + 4
-        ndk {
-          abiFilters "x86", ""
-        }
-      }
-      all {
-        ndk {
-          abiFilters "all", ""
-        }
-      }
     }
-  }
-  /*
 
-  ELSE NOTHING! DON'T MESS WITH THE VERSION CODE IF YOU DON'T HAVE TO!
+    defaultConfig {
+        versionCode cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))
+        applicationId privateHelpers.extractStringFromManifest("package")
 
-  else if (!cdvVersionCode) {
-    def minSdkVersion = cdvMinSdkVersion ?: privateHelpers.extractIntFromManifest("minSdkVersion")
-    // Vary versionCode by the two most common API levels:
-    // 14 is ICS, which is the lowest API level for many apps.
-    // 20 is Lollipop, which is the lowest API level for the updatable system webview.
-    if (minSdkVersion >= 20) {
-      defaultConfig.versionCode += 9
-    } else if (minSdkVersion >= 14) {
-      defaultConfig.versionCode += 8
+        if (cdvMinSdkVersion != null) {
+            minSdkVersion cdvMinSdkVersion
+        }
     }
-  }
-  */
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_6
-    targetCompatibility JavaVersion.VERSION_1_6
-  }
-  if (cdvReleaseSigningPropertiesFile) {
-    signingConfigs {
-      release {
-        // These must be set or Gradle will complain (even if they are overridden).
-        keyAlias = ""
-        keyPassword = "__unset"
-        // And these must be set to non-empty in order to have the signing step added to the task graph.
-        storeFile = null
-        storePassword = "__unset"
+
+    lintOptions {
+      abortOnError false;
+    }
+
+    compileSdkVersion cdvCompileSdkVersion
+    buildToolsVersion cdvBuildToolsVersion
+
+    if (Boolean.valueOf(cdvBuildMultipleApks)) {
+        productFlavors {
+            armv7 {
+                versionCode defaultConfig.versionCode*10 + 2
+                ndk {
+                    abiFilters "armeabi-v7a", ""
+                }
+            }
+            x86 {
+                versionCode defaultConfig.versionCode*10 + 4
+                ndk {
+                    abiFilters "x86", ""
+                }
+            }
+            all {
+                ndk {
+                    abiFilters "all", ""
+                }
+            }
+        }
+    }
+    /*
+
+    ELSE NOTHING! DON'T MESS WITH THE VERSION CODE IF YOU DON'T HAVE TO!
+
+    else if (!cdvVersionCode) {
+      def minSdkVersion = cdvMinSdkVersion ?: privateHelpers.extractIntFromManifest("minSdkVersion")
+      // Vary versionCode by the two most common API levels:
+      // 14 is ICS, which is the lowest API level for many apps.
+      // 20 is Lollipop, which is the lowest API level for the updatable system webview.
+      if (minSdkVersion >= 20) {
+        defaultConfig.versionCode += 9
+      } else if (minSdkVersion >= 14) {
+        defaultConfig.versionCode += 8
       }
     }
-    buildTypes {
-      release {
-        signingConfig signingConfigs.release
-      }
+    */
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_6
+        targetCompatibility JavaVersion.VERSION_1_6
     }
-    addSigningProps(cdvReleaseSigningPropertiesFile, signingConfigs.release)
-  }
-  if (cdvDebugSigningPropertiesFile) {
-    addSigningProps(cdvDebugSigningPropertiesFile, signingConfigs.debug)
-  }
-  productFlavors {
-  }
+
+    if (cdvReleaseSigningPropertiesFile) {
+        signingConfigs {
+            release {
+                // These must be set or Gradle will complain (even if they are overridden).
+                keyAlias = ""
+                keyPassword = "__unset" // And these must be set to non-empty in order to have the signing step added to the task graph.
+                storeFile = null
+                storePassword = "__unset"
+            }
+        }
+        buildTypes {
+            release {
+                signingConfig signingConfigs.release
+            }
+        }
+        addSigningProps(cdvReleaseSigningPropertiesFile, signingConfigs.release)
+    }
+    if (cdvDebugSigningPropertiesFile) {
+        addSigningProps(cdvDebugSigningPropertiesFile, signingConfigs.debug)
+    }
 }
 
 dependencies {
-  compile fileTree(include: '*.jar', dir: 'libs')
-  // SUB-PROJECT DEPENDENCIES START
-  debugCompile project(path: 'CordovaLib', configuration: 'debug')
-  releaseCompile project(path: 'CordovaLib', configuration: 'release')
-  // SUB-PROJECT DEPENDENCIES END
+    compile fileTree(dir: 'libs', include: '*.jar')
+    // SUB-PROJECT DEPENDENCIES START
+    debugCompile(project(path: "CordovaLib", configuration: "debug"))
+    releaseCompile(project(path: "CordovaLib", configuration: "release"))
+    // SUB-PROJECT DEPENDENCIES END
 }
 
 def promptForReleaseKeyPassword() {
